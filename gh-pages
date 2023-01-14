@@ -1,0 +1,36 @@
+body {
+    background-color: #F5F5DC; /* Attractive and soothing background color */
+}
+
+h1 {
+    text-align: center; /* Centered heading for improved visual appeal */
+    font-size: 36px; /* Larger font size for improved readability */
+    color: #2469d6; /* Deep purple color for a sense of luxury and elegance */
+}
+
+input[type="file"] {
+    display: block; /* Display the file input as a block for improved visual appeal */
+    margin: 0 auto; /* Center the file input on the page */
+    padding: 10px; /* Add some padding for improved user experience */
+    border: 2px solid #2469d6; /* Add a deep purple border for a sense of luxury and elegance */
+    border-radius: 5px; /* Round the corners for improved visual appeal */
+}
+
+img {
+    display: block; /* Display the image as a block for improved visual appeal */
+    margin: 0 auto; /* Center the image on the page */
+    border: 2px solid #2469d6; /* Add a deep purple border for a sense of luxury and elegance */
+    border-radius: 5px; /* Round the corners for improved visual appeal */
+}
+
+button {
+    display: block; /* Display the button as a block for improved visual appeal */
+    margin: 20px auto; /* Center the button on the page and add some margin for improved spacing */
+    padding: 10px 20px; /* Add some padding for improved user experience */
+    background-color: #2469d6; /* Deep purple background color for a sense of luxury and elegance */
+    color: #F5F5DC; /* White text color for improved readability */
+    border: none; /* Remove the border for a clean and modern look */
+    border-radius: 5px; /* Round the corners for improved visual appeal */
+    font-size: 18px; /* Larger font size for improved readability */
+    cursor: pointer; /* Add a cursor pointer for improved user experience */
+}
