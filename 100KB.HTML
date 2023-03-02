@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<h1>NaukriSahiHai.Com</h1>
+	<button id="goBack" onclick="window.history.back()">Go Back</button>
+</header>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	<title>Image Resizer and Compressor 100 KB</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/browser-image-compression@1.0.17/dist/browser-image-compression.min.js"></script>
+</head>
+<body>
+<h1>Image Resizer and Compressor</h1>
+<h1>By NaukriSahiHai.Com</h1>
+
+<div>
+	<input type="file" id="image" accept="image/*">
+	<br>
+	<br>
+	<img id="preview" src="" width="400" height="400" style="display: none;">
+	<br>
+	<br>
+	
+	<button id="compress100">Compress Less Than 100 KB</button>
+	
+	<br>
+	<br>
+	<button id="resize">Resize Image</button>
+	<br>
+	<br>
+	<div id="banner3">
+    <link rel="stylesheet" type="text/css" href="styles3.css">
+	<a  id="download" href="#" download>
+	<button id="download">Download Compressed Image</button>
+	</a>
+</div>
+</div>
+<script>
+	$(document).ready(function(){
+		var image = document.getElementById("image");
+		var preview = document.getElementById("preview");
+		var download = document.getElementById("download");
+			image.onchange = function(){
+		var reader = new FileReader();
+		reader.onload = function(){
+			preview.src = reader.result;
+			preview.style.display = "block";
+		}
+		reader.readAsDataURL(image.files[0]);
+	}
+
+	$("#compress50").click(function(){
+		compress(0.05);
+	});
+
+
+	$("#resize").click(function(){
+		resize();
+	});
+
+	function compress(size) {
+		var options = {
+			maxSizeMB: size,
+			useWebWorker: true,
+			maxIteration: 10,
+			quality: 0.8
+		}
+
+		browserImageCompression.compress(image.files[0], options).then(function(compressedFile) {
+			var reader = new 
+			FileReader();
+reader.onload = function() {
+preview.src = reader.result;
+download.href = reader.result;
+download.style.display = "block";
+};
+reader.readAsDataURL(compressedFile);
+});
+}
+		function resize(){
+		var img = new Image();
+		img.src = preview.src;
+		img.onload = function() {
+			var canvas = document.createElement("canvas");
+			var ctx = canvas.getContext("2d");
+			var MAX_WIDTH = 240;
+			var MAX_HEIGHT = 240;
+			var width = img.width;
+			var height = img.height;
+			if (width > height) {
+			  if (width > MAX_WIDTH) {
+				height *= MAX_WIDTH / width;
+				width = MAX_WIDTH;
+			  }
+			} else {
+			  if (height > MAX_HEIGHT) {
+				width *= MAX_HEIGHT / height;
+				height = MAX_HEIGHT;
+			  }
+			}
+			canvas.width = width;
+			canvas.height = height;
+			ctx.drawImage(img, 0, 0, width, height);
+			var dataURL = canvas.toDataURL();
+			preview.src = dataURL;
+			download.href = dataURL;
+			download.style.display = "block";
+		}
+	}
+});
+</script>
+</body>
+</html>		

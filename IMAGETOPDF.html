@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<h1>NaukriSahiHai.Com</h1>
+	<button id="goBack" onclick="window.history.back()">Go Back</button>
+</header>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	<title>Image to PDF Converter</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+</head>
+<body>
+
+<h1>Image to PDF Converter</h1>
+<h1>By NaukriSahiHai.Com</h1>
+<div>
+	<input type="file" id="image" accept="image/*">
+	<br>
+	<br>
+	<img id="preview" src="" width="400" height="400" style="display: none;">
+	<br>
+	<br>
+	<div id="banner3">
+    <link rel="stylesheet" type="text/css" href="styles3.css">
+	<button id="download">Download PDF</button>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		var image = document.getElementById("image");
+		var preview = document.getElementById("preview");
+
+		image.onchange = function(){
+			var reader = new FileReader();
+			reader.onload = function(){
+				preview.src = reader.result;
+				preview.style.display = "block";
+			}
+			reader.readAsDataURL(image.files[0]);
+		}
+
+		$("#download").click(function(){
+			var imgData = preview.src;
+			var pdf = new jsPDF('p', 'mm', 'a4');
+			var width = pdf.internal.pageSize.getWidth();
+			var height = pdf.internal.pageSize.getHeight();
+			pdf.addImage(imgData, 'JPEG', 0, 0, width, height);
+			pdf.save("image.pdf");
+		});
+	});
+</script>
+</body>
+</html>
