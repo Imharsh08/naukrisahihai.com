@@ -1,5 +1,4 @@
 # naukrisahihai.com
-<!DOCTYPE html>
 <html>
 <head>
 <div id="banner3">
