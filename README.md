@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NaukriSahiHai.Com</title>
     <link rel="stylesheet" type="text/css" href="css/styles_1.css">
 </head>
 <body>
